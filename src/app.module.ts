@@ -11,7 +11,7 @@ import { TasksModule } from './tasks/tasks.module';
       port: 5432,
       username: 'postgres',
       password: 'postgres',
-      database: 'nest-management',
+      database: 'task-management',
       autoLoadEntities: true,
       synchronize: true
     })
