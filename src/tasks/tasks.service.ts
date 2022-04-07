@@ -57,14 +57,11 @@ export class TasksService {
             throw new NotFoundException(`Task with ID "${id}" not found`);
         }
     }
-    // deteleTask(id: string): void {
-    //     const found = this.getTaskById(id);
-    //     this.tasks = this.tasks.filter((task) => task.id !== found.id);
-    // }
 
-    // updateTaskStatus(id: string, status: TaskStatus): Task {
-    //     const task: Task = this.getTaskById(id);
-    //     task.status = status;
-    //     return task;
-    // }
+    async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
+        const task = await this.getTaskById(id);
+        task.status = status;
+        await this.tasksRepository.save(task);
+        return task;
+    }
 }

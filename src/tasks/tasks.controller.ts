@@ -35,14 +35,13 @@ export class TasksController {
         return this.tasksService.deleteTask(id);
 
     }
-    // @Delete('/:id')
-    // deleteTask(@Param('id') id: string): void {
-    //     return this.tasksService.deteleTask(id);
-    // }
 
-    // @Patch('/:id/status')
-    // updateTaskStatus(@Param('id') id: string, @Body() updateTaskStatusDto: UpdateTaskStatusDto): Task {
-    //     const { status } = updateTaskStatusDto;
-    //     return this.tasksService.updateTaskStatus(id, status);
-    // }
+    @Patch('/:id/status')
+    updateTaskStatus(
+        @Param('id') id: string,
+        @Body() updateTaskStatusDto: UpdateTaskStatusDto
+    ): Promise<Task> {
+        const { status } = updateTaskStatusDto;
+        return this.tasksService.updateTaskStatus(id, status);
+    }
 }
